@@ -11,8 +11,8 @@
 \DeclareRedundantLanguages{dutch}{dutch}
 
 \DeclareBibliographyExtras{%
-  \protected\def\bibrangedash{-}%
-  \protected\def\bibdatedash{\bibrangedash}% FIXME: unsure
+  \protected\def\bibrangedash{\textendash\penalty\hyphenpenalty}%
+  \protected\def\bibdatedash{-}
   \let\finalandcomma=\empty
   %\protected\def\mkbibordinal#1{\stripzeros{#1}e}%
   \protected\def\mkbibordinal#1{%
