@@ -13,8 +13,14 @@
 \DeclareBibliographyExtras{%
   \protected\def\bibrangedash{\textendash\penalty\hyphenpenalty}%
   \protected\def\bibdatedash{-}
+
   \let\finalandcomma=\empty
+
+  % both ordinal numbers are valid, the first is the most basic: 1e, 2e, 19e
+  % whereas the second is capable of typesetting 1ste, 2de, 21ste, 102e
+
   %\protected\def\mkbibordinal#1{\stripzeros{#1}e}%
+
   \protected\def\mkbibordinal#1{%
     \begingroup
     \@tempcnta0#1\relax\number\@tempcnta
@@ -24,8 +30,10 @@
       \ifnum\@tempcnta=1 ste\else\ifnum\@tempcnta=8 ste\else de\fi\fi
     \fi
     \endgroup}%
+
   \protected\def\mkbibmascord{\mkbibordinal}%
   \protected\def\mkbibfemord{\mkbibordinal}%
+
   \protected\def\mkbibdatelong#1#2#3{%
     \iffieldundef{#3}
       {}
@@ -64,10 +72,10 @@
   references       = {{Referenties}{Referenties}},
   shorthands       = {{Lijst van afkortingen}{Afkortingen}},
   % 4.9.2.2
-  editor           = {{editor}{ed\adddot}},
-  editors          = {{editors}{eds\adddot}},
-  compiler         = {{samensteller}{samenst.\adddot}},
-  compilers        = {{samenstellers}{samenst.\adddot}},
+  editor           = {{redacteur}{red\adddot}},
+  editors          = {{redacteurs}{red\adddot}},
+  compiler         = {{samensteller}{samenst\adddot}},
+  compilers        = {{samenstellers}{samenst\adddot}},
   founder          = {{oprichter}{opr\adddot}},
   founders         = {{oprichters}{opr\adddot}},
   continuator      = {{opvolger}{opv\adddot}},
@@ -97,10 +105,10 @@
                       {red\adddotspace en annot\adddot}},
   editorsan        = {{redacteuren en annotatoren}%
                       {red\adddotspace en annot\adddot}},
-  editorin         = {{redactie en introductie}%
-                      {red\adddotspace en introd\adddot}},
-  editorsin        = {{redacteuren en introductie}%
-                      {red\adddotspace en introd\adddot}},
+  editorin         = {{redactie en inleiding}%
+                      {red\adddotspace en inl\adddot}},
+  editorsin        = {{redacteuren en inleiding}%
+                      {red\adddotspace en inl\adddot}},
   editorfo         = {{redacteur en voorwoord}%
                       {red\adddotspace en voorw\adddot}},
   editorsfo        = {{redacteuren en voorwoord}%
@@ -117,10 +125,10 @@
                       {red.,\addabbrvspace vert\adddot\ en annot\adddot}},
   editorstran      = {{redacteur, vertalers en annotatoren}%
                       {red.,\addabbrvspace vert\adddot\ en annot\adddot}},
-  editortrin       = {{redacteur, vertaler en introductie}%
-                      {red.,\addabbrvspace vert\adddot\ en introd\adddot}},
-  editorstrin      = {{redacteuren, vertalers en introductie}%
-                      {red.,\addabbrvspace vert\adddot\ en introd\adddot}},
+  editortrin       = {{redacteur, vertaler en inleiding}%
+                      {red.,\addabbrvspace vert\adddot\ en inl\adddot}},
+  editorstrin      = {{redacteuren, vertalers en inleiding}%
+                      {red.,\addabbrvspace vert\adddot\ en inl\adddot}},
   editortrfo       = {{redacteur, vertaler en voorwoord}%
                       {red.,\addabbrvspace vert\adddot\ en voorw\adddot}},
   editorstrfo      = {{redacteuren, vertalers en voorwoord}%
@@ -129,10 +137,10 @@
                       {red.,\addabbrvspace vert\adddot\ en naw\adddot}},
   editorstraf      = {{redacteuren, vertalers en nawoord}%
                       {red.,\addabbrvspace vert\adddot\ en naw\adddot}},
-  editorcoin       = {{redacteur, commentator en introductie}%
-                      {red.,\addabbrvspace comm\adddot\ en introd\adddot}},
-  editorscoin      = {{redacteuren, commentatoren en introductie}%
-                      {red.,\addabbrvspace comm\adddot\ en introd\adddot}},
+  editorcoin       = {{redacteur, commentator en inleiding}%
+                      {red.,\addabbrvspace comm\adddot\ en inl\adddot}},
+  editorscoin      = {{redacteuren, commentatoren en inleiding}%
+                      {red.,\addabbrvspace comm\adddot\ en inl\adddot}},
   editorcofo       = {{redacteur, commentator en voorwoord}%
                       {red.,\addabbrvspace comm\adddot\ en voorw\adddot}},
   editorscofo      = {{redacteuren, commentatoren en voorwoord}%
@@ -141,10 +149,10 @@
                       {red.,\addabbrvspace comm\adddot\ en naw\adddot}},
   editorscoaf      = {{redacteuren, commentatoren en nawoord}%
                       {red.,\addabbrvspace comm\adddot\ en naw\adddot}},
-  editoranin       = {{redacteur, annotator en introductie}%
-                      {red.,\addabbrvspace annot\adddot\ en introd\adddot}},
-  editorsanin      = {{redacteuren, annotatoren en introductie}%
-                      {red.,\addabbrvspace annot\adddot\ en introd\adddot}},
+  editoranin       = {{redacteur, annotator en inleiding}%
+                      {red.,\addabbrvspace annot\adddot\ en inl\adddot}},
+  editorsanin      = {{redacteuren, annotatoren en inleiding}%
+                      {red.,\addabbrvspace annot\adddot\ en inl\adddot}},
   editoranfo       = {{redacteur, annotator en voorwoord}%
                       {red.,\addabbrvspace annot\adddot\ en voorw\adddot}},
   editorsanfo      = {{redacteuren, annotatoren en voorwoord}%
@@ -153,10 +161,10 @@
                       {red.,\addabbrvspace annot\adddot\ en nawoord\adddot}},
   editorsanaf      = {{redacteuren, annotatoren en nawoord}%
                       {red.,\addabbrvspace annot\adddot\ en naw\adddot}},
-  editortrcoin     = {{redacteur, vertaler, commentator en introductie}%
-                      {red.,\addabbrvspace vert., comm\adddot\ en introd\adddot}},
-  editorstrcoin    = {{redacteuren, vertalers, commentatoren en introductie}%
-                      {red.,\addabbrvspace vert., comm\adddot\ en introd\adddot}},
+  editortrcoin     = {{redacteur, vertaler, commentator en inleiding}%
+                      {red.,\addabbrvspace vert., comm\adddot\ en inl\adddot}},
+  editorstrcoin    = {{redacteuren, vertalers, commentatoren en inleiding}%
+                      {red.,\addabbrvspace vert., comm\adddot\ en inl\adddot}},
   editortrcofo     = {{redacteur, vertaling, commentator en voorwoord}%
                       {red.,\addabbrvspace vert., comm\adddot\ en voorw\adddot}},
   editorstrcofo    = {{redacteuren, vertalers, commentatoren en voorwoord}%
@@ -165,10 +173,10 @@
                       {red.,\addabbrvspace vert., comm\adddot\ en naw\adddot}},
   editorstrcoaf    = {{redacteuren, vertalers, commentators en nawoord}%
                       {red.,\addabbrvspace vert., comm\adddot\ en naw\adddot}},
-  editortranin     = {{redacteur, vertaler, annotator en introductie}%
-                      {red.,\addabbrvspace vert., annot\adddot\ en introd\adddot}},
-  editorstranin    = {{redacteuren, vertalers, annotatoren en introductie}%
-                      {red.,\addabbrvspace vert., annot\adddot\ en introd\adddot}},
+  editortranin     = {{redacteur, vertaler, annotator en inleiding}%
+                      {red.,\addabbrvspace vert., annot\adddot\ en inl\adddot}},
+  editorstranin    = {{redacteuren, vertalers, annotatoren en inleiding}%
+                      {red.,\addabbrvspace vert., annot\adddot\ en inl\adddot}},
   editortranfo     = {{redacteur, vertaler, annotator en voorwoord}%
                       {red.,\addabbrvspace vert., annot\adddot\ en voorw\adddot}},
   editorstranfo    = {{redacteuren, vertalers, annotatoren en voorwoord}%
@@ -186,10 +194,10 @@
                       {vert\adddot\ en annot\adddot}},
   translatorsan    = {{vertalers en annotatoren}%
                       {vert\adddot\ en annot\adddot}},
-  translatorin     = {{vertaling en introductie}%
-                      {vert\adddot\ en introd\adddot}},
-  translatorsin    = {{vertaling en introductie}%
-                      {vert\adddot\ en introd\adddot}},
+  translatorin     = {{vertaling en inleiding}%
+                      {vert\adddot\ en inl\adddot}},
+  translatorsin    = {{vertaling en inleiding}%
+                      {vert\adddot\ en inl\adddot}},
   translatorfo     = {{vertaling en voorwoord}%
                       {vert\adddot\ en voorw\adddot}},
   translatorsfo    = {{vertaling en voorwoord}%
@@ -198,10 +206,10 @@
                       {vert\adddot\ en naw\adddot}},
   translatorsaf    = {{vertaling en nawoord}%
                       {vert\adddot\ en naw\adddot}},
-  translatorcoin   = {{vertaling, commentaar en introductie}%
-                      {vert., comm\adddot\ en introd\adddot}},
-  translatorscoin  = {{vertaling, commentaar en introductie}%
-                      {vert., comm\adddot\ en introd\adddot}},
+  translatorcoin   = {{vertaling, commentaar en inleiding}%
+                      {vert., comm\adddot\ en inl\adddot}},
+  translatorscoin  = {{vertaling, commentaar en inleiding}%
+                      {vert., comm\adddot\ en inl\adddot}},
   translatorcofo   = {{vertaling, commentaar en voorwoord}%
                       {vert., comm\adddot\ en voorwoord\adddot}},
   translatorscofo  = {{vertaling, commentaar en voorwoord}%
@@ -210,10 +218,10 @@
                       {vert., comm\adddot\ en naw\adddot}},
   translatorscoaf  = {{vertaling, commentaar en nawoord}%
                       {vert., comm\adddot\ en naw\adddot}},
-  translatoranin   = {{vertaling, annotaties en introductie}%
-                      {vert., annot\adddot\ en introd\adddot}},
-  translatorsanin  = {{vertaling, annotaties en introductie}%
-                      {vert., annot\adddot\ en introd\adddot}},
+  translatoranin   = {{vertaling, annotaties en inleiding}%
+                      {vert., annot\adddot\ en inl\adddot}},
+  translatorsanin  = {{vertaling, annotaties en inleiding}%
+                      {vert., annot\adddot\ en inl\adddot}},
   translatoranfo   = {{vertaling, annotaties en voorwoord}%
                       {vert., annot\adddot\ en voorw\adddot}},
   translatorsanfo  = {{vertaling, annotaties en voorwoord}%
@@ -226,8 +234,8 @@
   byauthor         = {{door}{door}},
   byeditor         = {{geredigeerd door}{red\adddot\addabbrvspace door}},
   bycompiler       = {{samengesteld door}{sam\adddot\addabbrvspace door}},
-  byfounder        = {{opgericht door}{opg\adddot\addabbrvspace door}},
-  bycontinuator    = {{opgevolgd door}{verdergez\adddot\addabbrvspace door}},
+  byfounder        = {{opgericht door}{opger\adddot\addabbrvspace door}},
+  bycontinuator    = {{opgevolgd door}{opgev\adddot\addabbrvspace door}},
   byredactor       = {{geredigeerd door}{red\adddot\ door}},
   byreviser        = {{nagekeken door}{nagek\adddot\addabbrvspace door}},
   bycollaborator   = {{in samenwerking met}{i\adddot s\adddot m}},
@@ -241,8 +249,8 @@
                       {red\adddotspace en comm\adddot\ door}},
   byeditoran       = {{geredigeerd en geannoteerd door}%
                       {red\adddotspace en annot\adddot\ door}},
-  byeditorin       = {{geredigeerd, met een introductie, van}%
-                      {red., met een introd., van}},
+  byeditorin       = {{geredigeerd, met een inleiding, van}%
+                      {red., met een inl., van}},
   byeditorfo       = {{geredigeerd, met een voorwoord, van}%
                       {red., met een voorw., van}},
   byeditoraf       = {{geredigeerd, met een nawoord, van}%
@@ -251,32 +259,32 @@
                       {red., vert\adddot\ \lbx@sfromlang\ en comm\adddot\ door}},
   byeditortran     = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd door}%
                       {red., vert\adddot\ \lbx@sfromlang\ en annot\adddot\ door}},
-  byeditortrin     = {{geredigeerd en vertaald \lbx@lfromlang, met een introductie, door}%
-                      {red\adddotspace en vert. \lbx@sfromlang, met een introd., door}},
+  byeditortrin     = {{geredigeerd en vertaald \lbx@lfromlang, met een inleiding, door}%
+                      {red\adddotspace en vert. \lbx@sfromlang, met een inl., door}},
   byeditortrfo     = {{geredigeerd en vertaald \lbx@lfromlang, met een voorwoord, door}%
                       {red\adddotspace en vert. \lbx@sfromlang, met een voorw., door}},
   byeditortraf     = {{geredigeerd en vertaald \lbx@lfromlang, met een nawoord, door}%
                       {red\adddotspace en vert. \lbx@sfromlang, met een naw., door}},
-  byeditorcoin     = {{geredigeerd en becommentarieerd, met een introductie, door}%
-                      {red\adddotspace en comm., met een introd., door}},
+  byeditorcoin     = {{geredigeerd en becommentarieerd, met een inleiding, door}%
+                      {red\adddotspace en comm., met een inl., door}},
   byeditorcofo     = {{geredigeerd en becommentarieerd, met een voorwoord, door}%
                       {red\adddotspace en comm., met een voorw., door}},
   byeditorcoaf     = {{geredigeerd en becommentarieerd, met een nawoord, door}%
                       {red\adddotspace en comm., met een naw., door}},
-  byeditoranin     = {{geredigeerd en geannoteerd, met een introductie, door}%
-                      {red\adddotspace en annot., met een introd., door}},
+  byeditoranin     = {{geredigeerd en geannoteerd, met een inleiding, door}%
+                      {red\adddotspace en annot., met een inl., door}},
   byeditoranfo     = {{geredigeerd en geannoteerd, met een voorwoord, door}%
                       {red\adddotspace en annot., met een voorw., door}},
   byeditoranaf     = {{geredigeerd en geannoteerd, met een nawoord, door}%
                       {red\adddotspace en annot., met een naw., door}},
-  byeditortrcoin   = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentarieerd, met een introductie, door}%
-                      {red., vert\adddot\ \lbx@sfromlang\ en comm., met een introd., door}},
+  byeditortrcoin   = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentarieerd, met een inleiding, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en comm., met een inl., door}},
   byeditortrcofo   = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentarieerd, met een voorwoord, door}%
                       {red., vert\adddot\ \lbx@sfromlang\ en comm., met een voorw., door}},
   byeditortrcoaf   = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentarieerd, met een nawoord, door}%
                       {red., vert\adddot\ \lbx@sfromlang\ en comm., met een naw., door}},
-  byeditortranin   = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd, met een introductie, door}%
-                      {red., vert\adddot\ \lbx@sfromlang\ en annot., met een introd., door}},
+  byeditortranin   = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd, met een inleiding, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en annot., met een inl., door}},
   byeditortranfo   = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd, met een voorwoord, door}%
                       {red., vert\adddot\ \lbx@sfromlang\ en annot., met een voorw., door}},
   byeditortranaf   = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd, met een nawoord, door}%
@@ -286,26 +294,26 @@
                       {vert\adddot\ \lbx@sfromlang\ en comm\adddot\ door}},
   bytranslatoran   = {{vertaald \lbx@lfromlang\ en geannoteerd door}%
                       {vert\adddot\ \lbx@sfromlang\ en annot.\adddot\ door}},
-  bytranslatorin   = {{vertaald \lbx@lfromlang, met een introductie, door}%
-                      {vert. \lbx@sfromlang, met een introd., door}},
+  bytranslatorin   = {{vertaald \lbx@lfromlang, met een inleiding, door}%
+                      {vert. \lbx@sfromlang, met een inl., door}},
   bytranslatorfo   = {{vertaald \lbx@lfromlang, met een voorwoord, door}%
                       {vert. \lbx@sfromlang, met een voorw., door}},
   bytranslatoraf   = {{vertaald \lbx@lfromlang, met een nawoord, door}%
                       {vert. \lbx@sfromlang, met een naw., door}},
-  bytranslatorcoin = {{vertaald \lbx@lfromlang\ en becommentarieerd, met een introd., door}%
-                      {vert\adddot\ \lbx@sfromlang\ en comm., met een introd., door}},
+  bytranslatorcoin = {{vertaald \lbx@lfromlang\ en becommentarieerd, met een inleiding., door}%
+                      {vert\adddot\ \lbx@sfromlang\ en comm., met een inl., door}},
   bytranslatorcofo = {{vertaald \lbx@lfromlang\ en becommentarieerd, met een voorwoord, door}%
                       {vert\adddot\ \lbx@sfromlang\ en comm., met een voorw., door}},
   bytranslatorcoaf = {{vertaald \lbx@lfromlang\ en becommentarieerd, met een nawoord, door}%
                       {vert\adddot\ \lbx@sfromlang\ en comm., met een naw., door}},
-  bytranslatoranin = {{vertaald \lbx@lfromlang\ en geannoteerd, met een introd., door}%
-                      {vert\adddot\ \lbx@sfromlang\ en annot., met een introd., door}},
+  bytranslatoranin = {{vertaald \lbx@lfromlang\ en geannoteerd, met een inleiding., door}%
+                      {vert\adddot\ \lbx@sfromlang\ en annot., met een inl., door}},
   bytranslatoranfo = {{vertaald \lbx@lfromlang\ en geannoteerd, met een voorwoord, door}%
                       {vert\adddot\ \lbx@sfromlang\ en annot., met een voorw., door}},
   bytranslatoranaf = {{vertaald \lbx@lfromlang\ en geannoteerd, met een nawoord, door}%
                       {vert\adddot\ \lbx@sfromlang\ en annot., met een naw., door}},
   % 4.9.2.8
-  withcommentator  = {{met een commentaar van}{met een comment\adddot\ van}},
+  withcommentator  = {{met een commentaar van}{met een comm\adddot\ van}},
   withannotator    = {{met annotaties door}{met annot\adddot\ door}},
   withintroduction = {{met een inleiding van}{met een inl\adddot\ van}},
   withforeword     = {{met een voorwoord van}{met een voorw\adddot\ van}},
