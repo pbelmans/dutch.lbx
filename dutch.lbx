@@ -1,36 +1,61 @@
-% $Id: dutch.lbx,v 0.8d 2009/05/30 14:43:06 lehman beta $
-
 \ProvidesFile{dutch.lbx}
-[\blx@lbxid $Id: dutch.lbx,v 0.8d 2009/05/30 14:43:06 lehman beta $]
+[\abx@lbxid $Id: dutch.lbx,v 1.6 2011/07/29 19:21:28 lehman stable $]
 
-% STATUS OF THIS FILE
-% complete, peer review pending;
-% (note that these are the US English translations)
-% the translations are should be ok but all
-% abbreviations need to be reviewed
+% Status:
+% - Almost complete
+% - Translations by native speakers
+%
+% Changes:
+% 2010-10-31 Update by Alexander van Loon
+
+\DeclareRedundantLanguages{dutch}{dutch}
 
 \DeclareBibliographyExtras{%
-  \let\bibrangedash\textendash
-  \def\finalandcomma{\addcomma}%
-  \def\mkbibordinal#1{%
-    \@tempcnta0#1 \the\@tempcnta
-    \@whilenum\@tempcnta>100\do{\advance\@tempcnta-100}%
+  \protected\def\bibrangedash{-}%
+  \protected\def\bibdatedash{\bibrangedash}% FIXME: unsure
+  \let\finalandcomma=\empty
+  %\protected\def\mkbibordinal#1{\stripzeros{#1}e}%
+  \protected\def\mkbibordinal#1{%
+    \begingroup
+    \@tempcnta0#1\relax\number\@tempcnta
+    \@whilenum\@tempcnta>100\do{\advance\@tempcnta-100\relax}%
     \ifnum\@tempcnta>20
-      \@whilenum\@tempcnta>9\do{\advance\@tempcnta-10}%
+      \@whilenum\@tempcnta>9\do{\advance\@tempcnta-10\relax}%
     \fi
-    \ifcase\@tempcnta th\or st\or nd\or rd\else th\fi}%
-  \def\bibdatelong{%
-    \@tempcnta0\thefield{day} %
-    \mkbibmonth{\thefield{month}}\nobreakspace
-    \the\@tempcnta,\space\thefield{year}}%
-  \def\bibdateshort{%
-    \thefield{day}/\thefield{month}/\thefield{year}}%
-  \def\biburldatelong{%
-    \@tempcnta0\thefield{urlday} %
-    \mkbibmonth{\thefield{urlmonth}}\nobreakspace
-    \the\@tempcnta,\space\thefield{urlyear}}%
-  \def\biburldateshort{%
-    \thefield{urlday}/\thefield{urlmonth}/\thefield{urlyear}}%
+    \ifcase\@tempcnta th\or st\or nd\or rd\else th\fi
+    \endgroup}%
+  \protected\def\mkbibmascord{\mkbibordinal}%
+  \protected\def\mkbibfemord{\mkbibordinal}%
+  \protected\def\mkbibdatelong#1#2#3{%
+    \iffieldundef{#3}
+      {}
+      {\stripzeros{\thefield{#3}}%
+       \iffieldundef{#2}{}{\nobreakspace}}%
+    \iffieldundef{#2}
+      {}
+      {\mkbibmonth{\thefield{#2}}%
+       \iffieldundef{#1}{}{\space}}%
+    \stripzeros{\thefield{#1}}}%
+  \protected\def\mkbibdateshort#1#2#3{%
+    \iffieldundef{#3}
+      {}
+      {\mkdatezeros{\thefield{#3}}%
+       \iffieldundef{#2}{}{\mbox{-}}}%
+    \iffieldundef{#2}
+      {}
+      {\mkdatezeros{\thefield{#2}}%
+       \iffieldundef{#1}{}{\mbox{-}}}%
+    \mkdatezeros{\thefield{#1}}}%
+  \savecommand\mkbibrangeterse
+  \protected\def\mkbibrangeterse{%
+    \BibliographyWarning{%
+      Date format 'terse' not applicable to\MessageBreak
+      Dutch dates. Using format 'short' instead}%
+    \mkbibrangefull{short}}%
+}
+
+\UndeclareBibliographyExtras{%
+  \restorecommand\mkbibrangeterse
 }
 
 \DeclareBibliographyStrings{%
@@ -59,9 +84,143 @@
   commentators     = {{commentatoren}{comm\adddot}},
   annotator        = {{annotator}{annot\adddot}},
   annotators       = {{annotatoren}{annot\adddot}},
-  % 4.9.2.3 TODO
-  % 4.9.2.4 TODO
-  % 4.9.2.4 TODO
+  % 4.9.2.3
+  editortr         = {{redacteur en vertaler}%
+                      {red\adddotspace en vert\adddot}},
+  editorstr        = {{redacteuren en vertalers}%
+                      {red\adddotspace en vert\adddot}},
+  editorco         = {{redacteur en commentator}%
+                      {red\adddotspace en comm\adddot}},
+  editorsco        = {{redacteuren en commentatoren}%
+                      {red\adddotspace en comm\adddot}},
+  editoran         = {{redacteur en annotator}%
+                      {red\adddotspace en annot\adddot}},
+  editorsan        = {{redacteuren en annotatoren}%
+                      {red\adddotspace en annot\adddot}},
+  editorin         = {{redactie en introductie}%
+                      {red\adddotspace en introd\adddot}},
+  editorsin        = {{redacteuren en introductie}%
+                      {red\adddotspace en introd\adddot}},
+  editorfo         = {{redacteur en voorwoord}%
+                      {red\adddotspace en voorw\adddot}},
+  editorsfo        = {{redacteuren en voorwoord}%
+                      {red\adddotspace en voorw\adddot}},
+  editoraf         = {{redacteur en nawoord}%
+                      {red\adddotspace en naw\adddot}},
+  editorsaf        = {{redacteuren en nawoord}%
+                      {red\adddotspace en naw\adddot}},
+  editortrco       = {{redacteur, vertaleren commentator}%
+                      {red.,\addabbrvspace vert\adddot\ en comm\adddot}},
+  editorstrco      = {{redacteuren, vertalers en commentatoren}%
+                      {red.,\addabbrvspace vert\adddot\ en comm\adddot}},
+  editortran       = {{redacteur, vertaler en annotator}%
+                      {red.,\addabbrvspace vert\adddot\ en annot\adddot}},
+  editorstran      = {{redacteur, vertalers en annotatoren}%
+                      {red.,\addabbrvspace vert\adddot\ en annot\adddot}},
+  editortrin       = {{redacteur, vertaler en introductie}%
+                      {red.,\addabbrvspace vert\adddot\ en introd\adddot}},
+  editorstrin      = {{redacteuren, vertalers en introductie}%
+                      {red.,\addabbrvspace vert\adddot\ en introd\adddot}},
+  editortrfo       = {{redacteur, vertaler en voorwoord}%
+                      {red.,\addabbrvspace vert\adddot\ en voorw\adddot}},
+  editorstrfo      = {{redacteuren, vertalers en voorwoord}%
+                      {red.,\addabbrvspace vert\adddot\ en voorw\adddot}},
+  editortraf       = {{redacteur, vertaler en nawoord}%
+                      {ed.,\addabbrvspace trans\adddot\ and naw\adddot}},
+  editorstraf      = {{redacteuren, vertalers en nawoord}%
+                      {red.,\addabbrvspace vert\adddot\ en naw\adddot}},
+  editorcoin       = {{redacteur, commentator en introductie}%
+                      {red.,\addabbrvspace comm\adddot\ en introd\adddot}},
+  editorscoin      = {{redacteuren, commentatoren en introductie}%
+                      {red.,\addabbrvspace comm\adddot\ en introd\adddot}},
+  editorcofo       = {{redacteur, commentator en voorwoord}%
+                      {red.,\addabbrvspace comm\adddot\ en voorw\adddot}},
+  editorscofo      = {{redacteuren, commentatoren en voorwoord}%
+                      {red.,\addabbrvspace comm\adddot\ en voorw\adddot}},
+  editorcoaf       = {{redacteur, commentator en nawoord}%
+                      {red.,\addabbrvspace comm\adddot\ en naw\adddot}},
+  editorscoaf      = {{redacteuren, commentatoren en nawoord}%
+                      {red.,\addabbrvspace comm\adddot\ en naw\adddot}},
+  editoranin       = {{redacteur, annotator en introductie}%
+                      {red.,\addabbrvspace annot\adddot\ en introd\adddot}},
+  editorsanin      = {{redacteuren, annotatoren en introductie}%
+                      {red.,\addabbrvspace annot\adddot\ en introd\adddot}},
+  editoranfo       = {{redacteur, annotator en voorwoord}%
+                      {red.,\addabbrvspace annot\adddot\ en voorw\adddot}},
+  editorsanfo      = {{redacteuren, annotatoren en voorwoord}%
+                      {red.,\addabbrvspace annot\adddot\ en voorw\adddot}},
+  editoranaf       = {{redacteur, annotator en nawoord}%
+                      {red.,\addabbrvspace annot\adddot\ en nawoord\adddot}},
+  editorsanaf      = {{redacteuren, annotatoren en nawoord}%
+                      {red.,\addabbrvspace annot\adddot\ en naw\adddot}},
+  editortrcoin     = {{redacteur, vertaler, commentator en introductie}%
+                      {red.,\addabbrvspace vert., comm\adddot\ en introd\adddot}},
+  editorstrcoin    = {{redacteuren, vertalers, commentatoren en introductie}%
+                      {red.,\addabbrvspace vert., comm\adddot\ and introd\adddot}},
+  editortrcofo     = {{redacteur, vertaling, commentator en voorwoord}%
+                      {red.,\addabbrvspace vert., comm\adddot\ en voorw\adddot}},
+  editorstrcofo    = {{redacteuren, vertalers, commentatoren en voorwoord}%
+                      {red.,\addabbrvspace vert., comm\adddot\ en voorw\adddot}},
+  editortrcoaf     = {{redacteur, vertaler, commentator en nawoord}%
+                      {red.,\addabbrvspace vert., comm\adddot\ en naw\adddot}},
+  editorstrcoaf    = {{redacteuren, vertalers, commentators en nawoord}%
+                      {red.,\addabbrvspace vert., comm\adddot\ en naw\adddot}},
+  editortranin     = {{redacteur, vertaler, annotator en introductie}%
+                      {red.,\addabbrvspace vert., annot\adddot\ en introd\adddot}},
+  editorstranin    = {{redacteuren, vertalers, annotatoren en introductie}%
+                      {red.,\addabbrvspace vert., annot\adddot\ en introd\adddot}},
+  editortranfo     = {{redacteur, vertaler, annotator en voorwoord}%
+                      {red.,\addabbrvspace vert., annot\adddot\ and voorw\adddot}},
+  editorstranfo    = {{redacteuren, vertalers, annotatoren en voorwoord}%
+                      {red.,\addabbrvspace vert., annot\adddot\ en voorw\adddot}},
+  editortranaf     = {{redacteur, vertaler, annotator en nawoord}%
+                      {red.,\addabbrvspace vert., annot\adddot\ en naw\adddot}},
+  editorstranaf    = {{redacteuren, vertalers, annotatoren en nawoord}%
+                      {red.,\addabbrvspace vert., annot\adddot\ en naw\adddot}},
+  translatorco     = {{vertaler en commentator}%
+                      {vert\adddot\ en comm\adddot}},
+  translatorsco    = {{vertalers en commentatoren}%
+                      {vert\adddot\ en comm\adddot}},
+  translatoran     = {{vertaler en annotator}%
+                      {vert\adddot\ en annot\adddot}},
+  translatorsan    = {{vertalers en annotatoren}%
+                      {vert\adddot\ en annot\adddot}},
+  translatorin     = {{vertaling en introductie}%
+                      {vert\adddot\ en introd\adddot}},
+  translatorsin    = {{vertaling en introductie}%
+                      {vert\adddot\ en introd\adddot}},
+  translatorfo     = {{vertaling en voorwoord}%
+                      {vert\adddot\ en voorw\adddot}},
+  translatorsfo    = {{vertaling en voorwoord}%
+                      {vert\adddot\ en voorw\adddot}},
+  translatoraf     = {{vertaling en nawoord}%
+                      {vert\adddot\ en naw\adddot}},
+  translatorsaf    = {{vertaling en nawoord}%
+                      {vert\adddot\ en naw\adddot}},
+  translatorcoin   = {{vertaling, commentaar en introductie}%
+                      {vert., comm\adddot\ en introd\adddot}},
+  translatorscoin  = {{vertaling, commentaar en introductie}%
+                      {trans., comm\adddot\ en introd\adddot}},
+  translatorcofo   = {{vertaling, commentaar en voorwoord}%
+                      {trans., comm\adddot\ en voorwoord\adddot}},
+  translatorscofo  = {{vertaling, commentaar en voorwoord}%
+                      {trans., comm\adddot\ en voorw\adddot}},
+  translatorcoaf   = {{vertaling, commentaar en nawoord}%
+                      {trans., comm\adddot\ en naw\adddot}},
+  translatorscoaf  = {{vertaling, commentaar en nawoord}%
+                      {trans., comm\adddot\ en naw\adddot}},
+  translatoranin   = {{vertaling, annotaties en introductie}%
+                      {trans., annot\adddot\ en introd\adddot}},
+  translatorsanin  = {{vertaling, annotaties en introductie}%
+                      {trans., annot\adddot\ en introd\adddot}},
+  translatoranfo   = {{vertaling, annotaties en voorwoord}%
+                      {trans., annot\adddot\ en voorw\adddot}},
+  translatorsanfo  = {{vertaling, annotaties en voorwoord}%
+                      {trans., annot\adddot\ en voorw\adddot}},
+  translatoranaf   = {{vertaling, annotaties en nawoord}%
+                      {trans., annot\adddot\ en naw\adddot}},
+  translatorsanaf  = {{vertaling, annotaties en nawoord}%
+                      {trans., annot\adddot\ en naw\adddot}},
   % 4.9.2.5
   byauthor         = {{door}{door}},
   byeditor         = {{geredigeerd door}{red\adddot\addabbrvspace door}},
@@ -71,79 +230,79 @@
   byredactor       = {{geredigeerd door}{red\adddot\ door}},
   % byreviser        = {{nagekeken door}{nagek\adddot\addabbrvspace door}},
   bycollaborator   = {{in samenwerking met}{i\adddot s\adddot m}},
-  bytranslator     = {{vertaald \lbx@fromlang\ door}{vert\adddot\ \lbx@fromlang\ door}},
+  bytranslator     = {{vertaald \lbx@lfromlang\ door}{vert\adddot\ \lbx@lfromlang\ door}},
   bycommentator    = {{becommentarieerd door}{comm\adddot\ door}},
   byannotator      = {{geannoteerd door}{annot\adddot\ door}},
   % 4.9.2.6
-  byeditortr       = {{\lbx@bytypeeditor\ en vertaald \lbx@fromlang\ door}%
-                      {\lbx@bytypeeditor\addabbrvspace en vert\adddot\ \lbx@fromlang\ door}},
-  byeditorco       = {{\lbx@bytypeeditor\ en becommentarieerd door}%
-                      {\lbx@bytypeeditor\addabbrvspace en comm\adddot\ door}},
-  byeditoran       = {{\lbx@bytypeeditor\ en geannoteerd door}%
-                      {\lbx@bytypeeditor\addabbrvspace en annot\adddot\ door}},
-  byeditorin       = {{\lbx@bytypeeditor, met een inleiding, van}%
-                      {\lbx@bytypeeditor,\addabbrvspace met een inl., van}},
-  byeditorfo       = {{\lbx@bytypeeditor, met een voorwoord, van}%
-                      {\lbx@bytypeeditor,\addabbrvspace met een voorw., van}},
-  byeditoraf       = {{\lbx@bytypeeditor, met een nawoord, van}%
-                      {\lbx@bytypeeditor,\addabbrvspace met een naw., van}},
-  byeditortrco     = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en becommentarieerd door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en comm\adddot\ door}},
-  byeditortran     = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en geannoteerd door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en annot\adddot\ door}},
-  byeditortrin     = {{\lbx@bytypeeditor\ en vertaald \lbx@fromlang, met een inleiding, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en vert. \lbx@fromlang, met een inl., door}},
-  byeditortrfo     = {{\lbx@bytypeeditor\ en vertaald \lbx@fromlang, met een voorwoord, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en vert. \lbx@fromlang, met een voorw., door}},
-  byeditortraf     = {{\lbx@bytypeeditor\ en vertaald \lbx@fromlang, met een nawoord, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en vert. \lbx@fromlang, met een naw., door}},
-  byeditorcoin     = {{\lbx@bytypeeditor\ en becommentarieerd, met een inleiding, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en comm., met een inl., door}},
-  byeditorcofo     = {{\lbx@bytypeeditor\ en becommentarieerd, met een voorwoord, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en comm., met een voorw., door}},
-  byeditorcoaf     = {{\lbx@bytypeeditor\ en becommentarieerd, met een nawoord, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en comm., met een naw., door}},
-  byeditoranin     = {{\lbx@bytypeeditor\ en geannoteerd, met een inleiding, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en annot., met een inl., door}},
-  byeditoranfo     = {{\lbx@bytypeeditor\ en geannoteerd, met een voorwoord, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en annot., met een voorw., door}},
-  byeditoranaf     = {{\lbx@bytypeeditor\ en geannoteerd, met een nawoord, door}%
-                      {\lbx@bytypeeditor\addabbrvspace en annot., met een naw., door}},
-  byeditortrcoin   = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en becommentarieerd, met een inleiding, door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en comm., met een inl., door}},
-  byeditortrcofo   = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en becommentarieerd, met een voorwoord, door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en comm., met een voorw., door}},
-  byeditortrcoaf   = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en becommentarieerd, met een nawoord, door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en comm., met een naw., door}},
-  byeditortranin   = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en geannoteerd, met een inleiding, door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en annot., met een inl., door}},
-  byeditortranfo   = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en geannoteerd, met een voorwoord, door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en annot., met een voorw., door}},
-  byeditortranaf   = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en geannoteerd, met een nawoord, door}%
-                      {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en annot., met een naw., door}},
+  byeditortr       = {{geredigeerd en vertaald \lbx@lfromlang\ door}%
+                      {red\adddotspace en vert\adddot\ \lbx@sfromlang\ door}},
+  byeditorco       = {{geredigeerd en becommentari\"{e}erd door}%
+                      {red\adddotspace en comm\adddot\ door}},
+  byeditoran       = {{geredigeerd en geannoteerd door}%
+                      {red\adddotspace en annot\adddot\ door}},
+  byeditorin       = {{geredigeerd, met een introductie, van}%
+                      {red., met een introd., van}},
+  byeditorfo       = {{geredigeerd, met een voorwoord, van}%
+                      {red., met een voorw., van}},
+  byeditoraf       = {{geredigeerd, met een nawoord, van}%
+                      {red., met een naw., van}},
+  byeditortrco     = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentari\"{e}erd door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en comm\adddot\ door}},
+  byeditortran     = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en annot\adddot\ door}},
+  byeditortrin     = {{geredigeerd en vertaald \lbx@lfromlang, met een introductie, door}%
+                      {red\adddotspace en vert. \lbx@sfromlang, met een introd., door}},
+  byeditortrfo     = {{geredigeerd en vertaald \lbx@lfromlang, met een voorwoord, door}%
+                      {red\adddotspace en vert. \lbx@sfromlang, met een voorw., door}},
+  byeditortraf     = {{geredigeerd en vertaald \lbx@lfromlang, met een nawoord, door}%
+                      {red\adddotspace en vert. \lbx@sfromlang, met een naw., door}},
+  byeditorcoin     = {{geredigeerd en becommentari\"{e}erd, met een introductie, door}%
+                      {red\adddotspace en comm., met een introd., door}},
+  byeditorcofo     = {{geredigeerd en becommentari\"{e}erd, met een voorwoord, door}%
+                      {red\adddotspace en comm., met een voorw., door}},
+  byeditorcoaf     = {{geredigeerd en becommentari\"{e}erd, met een nawoord, door}%
+                      {red\adddotspace en comm., met een naw., door}},
+  byeditoranin     = {{geredigeerd en geannoteerd, met een introductie, door}%
+                      {red\adddotspace en annot., met een introd., door}},
+  byeditoranfo     = {{geredigeerd en geannoteerd, met een voorwoord, door}%
+                      {red\adddotspace en annot., met een voorw., door}},
+  byeditoranaf     = {{geredigeerd en geannoteerd, met een nawoord, door}%
+                      {red\adddotspace en annot., met een naw., door}},
+  byeditortrcoin   = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentari\"{e}erd, met een introductie, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en comm., met een introd., door}},
+  byeditortrcofo   = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentari\"{e}erd, met een voorwoord, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en comm., met een voorw., door}},
+  byeditortrcoaf   = {{geredigeerd, vertaald \lbx@lfromlang\ en becommentari\"{e}erd, met een nawoord, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en comm., met een naw., door}},
+  byeditortranin   = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd, met een introductie, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en annot., met een introd., door}},
+  byeditortranfo   = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd, met een voorwoord, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en annot., met een voorw., door}},
+  byeditortranaf   = {{geredigeerd, vertaald \lbx@lfromlang\ en geannoteerd, met een nawoord, door}%
+                      {red., vert\adddot\ \lbx@sfromlang\ en annot., met een naw., door}},
   % 4.9.2.7
-  bytranslatorco   = {{vertaald \lbx@fromlang\ en becommentarieerd door}%
-                      {vert\adddot\ \lbx@fromlang\ en comm\adddot\ door}},
-  bytranslatoran   = {{vertaald \lbx@fromlang\ en geannoteerd door}%
-                      {vert\adddot\ \lbx@fromlang\ en annot.\adddot\ door}},
-  bytranslatorin   = {{vertaald \lbx@fromlang, met een inleiding, door}%
-                      {vert. \lbx@fromlang, met een inl., door}},
-  bytranslatorfo   = {{vertaald \lbx@fromlang, met een voorwoord, door}%
-                      {vert. \lbx@fromlang, met een voorw., door}},
-  bytranslatoraf   = {{vertaald \lbx@fromlang, met een nawoord, door}%
-                      {vert. \lbx@fromlang, met een naw., door}},
-  bytranslatorcoin = {{vertaald \lbx@fromlang\ en becommentarieerd, met een inleiding, door}%
-                      {vert\adddot\ \lbx@fromlang\ en comm., met een inl., door}},
-  bytranslatorcofo = {{vertaald \lbx@fromlang\ en becommentarieerd, met een voorwoord, door}%
-                      {vert\adddot\ \lbx@fromlang\ en comm., met een voorw., door}},
-  bytranslatorcoaf = {{vertaald \lbx@fromlang\ en becommentarieerd, met een nawoord, door}%
-                      {vert\adddot\ \lbx@fromlang\ en comm., met een naw., door}},
-  bytranslatoranin = {{vertaald \lbx@fromlang\ en geannoteerd, met een inl., door}%
-                      {vert\adddot\ \lbx@fromlang\ en annot., met een inl., door}},
-  bytranslatoranfo = {{vertaald \lbx@fromlang\ en geannoteerd, met een voorwoord, door}%
-                      {vert\adddot\ \lbx@fromlang\ en annot., met een voorw., door}},
-  bytranslatoranaf = {{vertaald \lbx@fromlang\ en geannoteerd, met een nawoord, door}%
-                      {vert\adddot\ \lbx@fromlang\ en annot., met een naw., door}},
+  bytranslatorco   = {{vertaald \lbx@lfromlang\ en becommentari\"{e}erd door}%
+                      {vert\adddot\ \lbx@sfromlang\ en comm\adddot\ door}},
+  bytranslatoran   = {{vertaald \lbx@lfromlang\ en geannoteerd door}%
+                      {vert\adddot\ \lbx@sfromlang\ en annot.\adddot\ door}},
+  bytranslatorin   = {{vertaald \lbx@lfromlang, met een introductie, door}%
+                      {vert. \lbx@sfromlang, met een introd., door}},
+  bytranslatorfo   = {{vertaald \lbx@lfromlang, met een voorwoord, door}%
+                      {vert. \lbx@sfromlang, met een voorw., door}},
+  bytranslatoraf   = {{vertaald \lbx@lfromlang, met een nawoord, door}%
+                      {vert. \lbx@sfromlang, met een naw., door}},
+  bytranslatorcoin = {{vertaald \lbx@lfromlang\ en becommentari\"{e}erd, met een introd., door}%
+                      {vert\adddot\ \lbx@sfromlang\ en comm., met een introd., door}},
+  bytranslatorcofo = {{vertaald \lbx@lfromlang\ en becommentari\"{e}erd, met een voorwoord, door}%
+                      {vert\adddot\ \lbx@sfromlang\ en comm., met een voorw., door}},
+  bytranslatorcoaf = {{vertaald \lbx@lfromlang\ en becommentari\"{e}erd, met een nawoord, door}%
+                      {vert\adddot\ \lbx@sfromlang\ en comm., met een naw., door}},
+  bytranslatoranin = {{vertaald \lbx@lfromlang\ en geannoteerd, met een introd., door}%
+                      {vert\adddot\ \lbx@sfromlang\ en annot., met een introd., door}},
+  bytranslatoranfo = {{vertaald \lbx@lfromlang\ en geannoteerd, met een voorwoord, door}%
+                      {vert\adddot\ \lbx@sfromlang\ en annot., met een voorw., door}},
+  bytranslatoranaf = {{vertaald \lbx@lfromlang\ en geannoteerd, met een nawoord, door}%
+                      {vert\adddot\ \lbx@sfromlang\ en annot., met een naw., door}},
   % 4.9.2.8
   withcommentator  = {{met een commentaar van}{met een comment\adddot\ van}},
   withannotator    = {{met annotaties door}{met annot\adddot\ door}},
@@ -276,42 +435,23 @@
   fromspanish      = {{uit het Spaans}{uit het Spaans}},
   fromswedish      = {{uit het Zweeds}{uit het Zweeds}},
   % 4.9.2.19
-  countryca        = {{Canada}{CA}},
   countryde        = {{Duitsland}{DE}},
-  countrydk        = {{Denemarken}{DK}},
-  countryes        = {{Spanje}{ES}},
   countryeu        = {{Europese Unie}{EU}},
   countryep        = {{Europese Unie}{EP}},
   countryfr        = {{Frankrijk}{FR}},
-  countryit        = {{Itali\"{e}}{IT}},
-  countryno        = {{Noorwegen}{NO}},
-  countryse        = {{Zweden}{SE}},
   countryuk        = {{Verenigd Koninkrijk}{VK}},
   countryus        = {{Verenigde Staten van Amerika}{VS}},
-  countrywo        = {{wereld}{WE}},
   % 4.9.2.20
   patent           = {{patent}{pat\adddot}},
-  patentca         = {{Canadees patent}{Canadees pat\adddot}},
   patentde         = {{Duits patent}{Duits pat\adddot}},
-  patentdk         = {{Deens patent}{Deens pat\adddot}},
-  patentes         = {{Spaans patent}{Spaans pat\adddot}},
   patenteu         = {{Europees patent}{Europees pat\adddot}},
   patentfr         = {{Frans patent}{Frans pat\adddot}},
-  patentit         = {{Italiaans patent}{Italiaans pat\adddot}},
-  patentno         = {{Noors patent}{Noors pat\adddot}},
-  patentse         = {{Zweeds patent}{Zweeds pat\adddot}},
   patentuk         = {{Brits patent}{Brits pat\adddot}},
   patentus         = {{Amerikaans patent}{Amerikaans pat\adddot}},
   patreq           = {{patentaanvraag}{patentaanvr\adddot}},
-  patreqca         = {{Canadese patentaanvraag}{Canadese patentaanvr\adddot}},
   patreqde         = {{Duitse patentaanvraag}{Duitse patentaanvr\adddot}},
-  patreqdk         = {{Deense patentaanvraag}{Deense patentaanvr\adddot}},
-  patreqes         = {{Spaanse patentaanvraag}{Spaanse patentaanvr\adddot}},
   patreqeu         = {{Europese patentaanvraag}{Europese patentaanvr\adddot}},
   patreqfr         = {{Franse patentaanvraag}{Franse patentaanvr\adddot}},
-  patreqit         = {{Italiaanse patentaanvraag}{Italiaanse patentaanvr\adddot}},
-  patreqno         = {{Noorse patentaanvraag}{Noorse patentaanvr\adddot}},
-  patreqse         = {{Zweedse patentaanvraag}{Zweedse patentaanvr\adddot}},
   patrequk         = {{Britse patentaanvraag}{Britse patentaanvr\adddot}},
   patrequs         = {{Amerikaanse patentaanvraag}{Amerikaanse patentaanvr\adddot}},
 }
