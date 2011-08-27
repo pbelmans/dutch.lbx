@@ -34,21 +34,23 @@
 }
 
 \DeclareBibliographyStrings{%
+  % 4.9.2.1
   bibliography     = {{Bibliografie}{Bibliografie}},
   references       = {{Referenties}{Referenties}},
   shorthands       = {{Lijst van afkortingen}{Afkortingen}},
+  % 4.9.2.2
   editor           = {{editor}{ed\adddot}},
   editors          = {{editors}{eds\adddot}},
   compiler         = {{samensteller}{samenst.\adddot}},
   compilers        = {{samenstellers}{samenst.\adddot}},
-  redactor         = {{redacteur}{red\adddot}},
-  redactors        = {{redacteuren}{red\adddot}},
-  % reviser          = {{redacteur}{red\adddot}},
-  % revisers         = {{redacteuren}{red\adddot}},
   founder          = {{oprichter}{opr\adddot}},
   founders         = {{oprichters}{opr\adddot}},
   % continuator      = {{continuator}{cont\adddot}},
   % continuators     = {{continuators}{cont\adddot}},
+  redactor         = {{redacteur}{red\adddot}},
+  redactors        = {{redacteuren}{red\adddot}},
+  % reviser          = {{redacteur}{red\adddot}},
+  % revisers         = {{redacteuren}{red\adddot}},
   collaborator     = {{medewerker}{med\adddot}},
   collaborators    = {{medewerkers}{med\adddot}},
   translator       = {{vertaler}{vert\adddot}},
@@ -57,13 +59,12 @@
   commentators     = {{commentatoren}{comm\adddot}},
   annotator        = {{annotator}{annot\adddot}},
   annotators       = {{annotatoren}{annot\adddot}},
-  commentary       = {{commentaar}{comm\adddot}},
-  annotations      = {{annotaties}{annot\adddot}},
-  introduction     = {{inleiding}{inl\adddot}},
-  foreword         = {{voorwoord}{voorw\adddot}},
-  afterword        = {{nawoord}{naw\adddot}},
+  % 4.9.2.3 TODO
+  % 4.9.2.4 TODO
+  % 4.9.2.4 TODO
+  % 4.9.2.5
   byauthor         = {{door}{door}},
-  byeditor         = {{geredigeerd door}{\red\adddot\addabbrvspace door}},
+  byeditor         = {{geredigeerd door}{red\adddot\addabbrvspace door}},
   bycompiler       = {{samengesteld door}{sam\adddot\addabbrvspace door}},
   byfounder        = {{opgericht door}{opg\adddot\addabbrvspace door}},
   % bycontinuator    = {{verdergezet door}{verdergez\adddot\addabbrvspace door}},
@@ -73,11 +74,7 @@
   bytranslator     = {{vertaald \lbx@fromlang\ door}{vert\adddot\ \lbx@fromlang\ door}},
   bycommentator    = {{becommentarieerd door}{comm\adddot\ door}},
   byannotator      = {{geannoteerd door}{annot\adddot\ door}},
-  withcommentator  = {{met een commentaar van}{met een comment\adddot\ van}},
-  withannotator    = {{met annotaties van}{met annot\adddot\ van}},
-  withintroduction = {{met een inleiding van}{met een inl\adddot\ van}},
-  withforeword     = {{met een voorwoord van}{met een voorw\adddot\ van}},
-  withafterword    = {{met een nawoord van}{met een naw\adddot\ van}},
+  % 4.9.2.6
   byeditortr       = {{\lbx@bytypeeditor\ en vertaald \lbx@fromlang\ door}%
                       {\lbx@bytypeeditor\addabbrvspace en vert\adddot\ \lbx@fromlang\ door}},
   byeditorco       = {{\lbx@bytypeeditor\ en becommentarieerd door}%
@@ -124,6 +121,7 @@
                       {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en annot., met een voorw., door}},
   byeditortranaf   = {{\lbx@bytypeeditor, vertaald \lbx@fromlang\finalandcomma\ en geannoteerd, met een nawoord, door}%
                       {\lbx@bytypeeditor,\addabbrvspace vert\adddot\ \lbx@fromlang\finalandcomma\ en annot., met een naw., door}},
+  % 4.9.2.7
   bytranslatorco   = {{vertaald \lbx@fromlang\ en becommentarieerd door}%
                       {vert\adddot\ \lbx@fromlang\ en comm\adddot\ door}},
   bytranslatoran   = {{vertaald \lbx@fromlang\ en geannoteerd door}%
@@ -146,9 +144,19 @@
                       {vert\adddot\ \lbx@fromlang\ en annot., met een voorw., door}},
   bytranslatoranaf = {{vertaald \lbx@fromlang\ en geannoteerd, met een nawoord, door}%
                       {vert\adddot\ \lbx@fromlang\ en annot., met een naw., door}},
-  and              = {{en}{en}},
-  andothers        = {{en andere}{e\adddot a\adddot}},
-  andmore          = {{en andere}{e\adddot a\adddot}},
+  % 4.9.2.8
+  withcommentator  = {{met een commentaar van}{met een comment\adddot\ van}},
+  withannotator    = {{met annotaties door}{met annot\adddot\ door}},
+  withintroduction = {{met een inleiding van}{met een inl\adddot\ van}},
+  withforeword     = {{met een voorwoord van}{met een voorw\adddot\ van}},
+  withafterword    = {{met een nawoord van}{met een naw\adddot\ van}},
+  % 4.9.2.9
+  commentary       = {{commentaar}{comm\adddot}},
+  annotations      = {{annotaties}{annot\adddot}},
+  introduction     = {{inleiding}{inl\adddot}},
+  foreword         = {{voorwoord}{voorw\adddot}},
+  afterword        = {{nawoord}{naw\adddot}},
+  % 4.9.2.10
   volume           = {{deel}{deel}},
   volumes          = {{delen}{delen}},
   jourvol          = {{jaargang}{jrg\adddot}},
@@ -156,26 +164,33 @@
   newseries        = {{nieuwe reeks}{nieuwe rks\adddot}},
   oldseries        = {{oude reeks}{oude rks\adddot}},
   edition          = {{editie}{ed\adddot}},
-  reprint          = {{herdruk}{herdr\adddot}},
-  reprintof        = {{herdruk van}{herdr\adddotspace van}},
-  reprintas        = {{herdrukt als}{herdr\adddotspace als}},
-  page             = {{pagina}{p\adddot}},
-  pages            = {{pagina's}{p\adddot}},
-  column           = {{kolom}{kol\adddot}},
-  columns          = {{kolommen}{kol\adddot}},
-  line             = {{regel}{r\adddot}},
-  lines            = {{regels}{r\adddot}},
-  verse            = {{vers}{v\adddot}},
-  verses           = {{verzen}{v\adddot}},
-  section          = {{sectie}{\S}},
-  sections         = {{secties}{\S}},
-  paragraph        = {{paragraaf}{par\adddot}},
-  paragraphs       = {{paragrafen}{par\adddot}},
   in               = {{in}{in}},
   inseries         = {{in}{in}},
   ofseries         = {{van}{van}},
   number           = {{nummer}{nr\adddot}},
   chapter          = {{hoofdstuk}{hfdstk\adddot}},
+  version          = {{versie}{versie}},
+  reprint          = {{herdruk}{herdr\adddot}},
+  reprintof        = {{herdruk van}{herdr\adddotspace van}},
+  reprintas        = {{herdrukt als}{herdr\adddotspace als}},
+  % 4.9.2.11
+  inpress          = {{in pers}{in pers}}, % TODO find better translation
+  inpreparation    = {{in voorbereiding}{in voorbereiding}},
+  submitted        = {{ingediend}{ingedied}},
+  % 4.9.2.12
+  page             = {{pagina}{p\adddot}},
+  pages            = {{pagina's}{p\adddot}},
+  column           = {{kolom}{kol\adddot}},
+  columns          = {{kolommen}{kol\adddot}},
+  section          = {{sectie}{\S}},
+  sections         = {{secties}{\S}},
+  paragraph        = {{paragraaf}{par\adddot}},
+  paragraphs       = {{paragrafen}{par\adddot}},
+  verse            = {{vers}{v\adddot}},
+  verses           = {{verzen}{v\adddot}},
+  line             = {{regel}{r\adddot}},
+  lines            = {{regels}{r\adddot}},
+  % 4.9.2.13
   mathesis         = {{masterscriptie}{masterscriptie}},
   phdthesis        = {{proefschrift}{proefschrift}},
   resreport        = {{onderzoeksrapport}{onderzoeksrap\adddot}},
@@ -183,15 +198,18 @@
   software         = {{computersoftware}{computersoft\adddot}},
   datacd           = {{cd-rom}{cd-rom}},
   audiocd          = {{audio-cd}{audio-cd}},
-  version          = {{versie}{versie}},
+  % 4.9.2.14
+  and              = {{en}{en}},
+  andothers        = {{en andere}{e\adddot a\adddot}},
+  andmore          = {{en andere}{e\adddot a\adddot}},
+  % 4.9.2.15
   url              = {{addres}{addres}},
   urlseen          = {{bezocht op}{bezocht op}},
-  inpress          = {{in pers}{in pers}}, % TODO find better translation
-  inpreparation    = {{in voorbereiding}{in voorbereiding}},
-  submitted        = {{ingediend}{ingedied}},
-  citedas          = {{verder geciteerd als}{verder geciteerd als}},
-  seenote          = {{zie voetnoot}{zie v\adddot}},
-  quotedin         = {{geciteerd in}{cit\adddotspace in}},
+  file             = {{bestand}{bestand}},
+  library          = {{bibliotheek}{bibliotheek}},
+  abstract         = {{samenvatting}{samenvatting}},
+  annotation       = {{annotaties}{annotaties}},
+  % 4.9.2.16
   idem             = {{idem}{idem}},
   idemsm           = {{idem}{idem}},
   idemsf           = {{eadem}{eadem}},
@@ -209,6 +227,13 @@
   passim           = {{passim}{pass\adddot}},
   see              = {{zie}{zie}},
   seealso          = {{zie ook}{zie ook}},
+  seenote          = {{zie voetnoot}{zie v\adddot}},
+  backrefpage      = {{zie pagina}{zie pag\adddot}},
+  backrefpages     = {{zie pagina's}{zie pag\adddot}},
+  quotedin         = {{geciteerd in}{cit\adddotspace in}},
+  citedas          = {{verder geciteerd als}{verder geciteerd als}},
+  thiscite         = {{voornamelijk}{vnl\adddot}},
+  % 4.9.2.17
   january          = {{januari}{jan\adddot}},
   february         = {{februari}{feb\adddot}},
   march            = {{maart}{mar\adddot}},
@@ -221,6 +246,7 @@
   october          = {{oktober}{okt\adddot}},
   november         = {{november}{nov\adddot}},
   december         = {{december}{dec\adddot}},
+  % 4.9.2.18
   langamerican     = {{Amerikaans Engels}{Amerikaans Engels}},
   langbrazilian    = {{Braziliaans Portugeens}{Braziliaans Portugees}},
   langdanish       = {{Deens}{Deens}},
@@ -249,6 +275,7 @@
   fromportuguese   = {{uit het Portugees}{uit het Portugees}},
   fromspanish      = {{uit het Spaans}{uit het Spaans}},
   fromswedish      = {{uit het Zweeds}{uit het Zweeds}},
+  % 4.9.2.19
   countryca        = {{Canada}{CA}},
   countryde        = {{Duitsland}{DE}},
   countrydk        = {{Denemarken}{DK}},
@@ -262,6 +289,7 @@
   countryuk        = {{Verenigd Koninkrijk}{VK}},
   countryus        = {{Verenigde Staten van Amerika}{VS}},
   countrywo        = {{wereld}{WE}},
+  % 4.9.2.20
   patent           = {{patent}{pat\adddot}},
   patentca         = {{Canadees patent}{Canadees pat\adddot}},
   patentde         = {{Duits patent}{Duits pat\adddot}},
@@ -286,10 +314,6 @@
   patreqse         = {{Zweedse patentaanvraag}{Zweedse patentaanvr\adddot}},
   patrequk         = {{Britse patentaanvraag}{Britse patentaanvr\adddot}},
   patrequs         = {{Amerikaanse patentaanvraag}{Amerikaanse patentaanvr\adddot}},
-  file             = {{bestand}{bestand}},
-  library          = {{bibliotheek}{bibliotheek}},
-  abstract         = {{samenvatting}{samenvatting}},
-  annotation       = {{annotaties}{annotaties}},
 }
 
 \endinput
