@@ -55,12 +55,6 @@
       {\mkdatezeros{\thefield{#2}}%
        \iffieldundef{#1}{}{\mbox{-}}}%
     \mkdatezeros{\thefield{#1}}}%
-  \savecommand\mkbibrangeterse
-  \protected\def\mkbibrangeterse{%
-    \BibliographyWarning{%
-      Date format 'terse' not applicable to\MessageBreak
-      Dutch dates. Using format 'short' instead}%
-    \mkbibrangefull{short}}%
 }
 
 \UndeclareBibliographyExtras{%
